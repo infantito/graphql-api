@@ -2,7 +2,7 @@
   "compilerOptions": {
     "allowJs": false,
     "allowSyntheticDefaultImports": true,
-    "baseUrl": "src",
+    "baseUrl": "./src",
     "esModuleInterop": true,
     "lib": ["es6"],
     "module": "commonjs",
@@ -10,8 +10,11 @@
     "noEmit": true,
     "outDir": "build",
     "paths": {
-      "@/*": ["src/*"],
-      "utils/*": ["utils/*"]
+      "@/*": ["./*"],
+      "schemas": ["./schemas"],
+      "schemas/*": ["./schemas/*"],
+      "utils": ["./utils"],
+      "utils/*": ["./utils/*"]
     },
     "resolveJsonModule": true,
     "rootDir": "src",

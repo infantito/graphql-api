@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "build": "babel src --extensions .ts --out-dir build",
-    "start:dev": "nodemon",
-    "lint": "eslint --ext .js,.ts src",
+    "start:dev": "nodemon src",
+    "lint": "eslint --ext .ts src",
     "lint-staged": "lint-staged",
     "prettier": "prettier --ignore-path .gitignore \"**/*.+(ts)\"",
     "format": "npm run prettier -- --write",
@@ -23,7 +23,8 @@
   "license": "ISC",
   "dependencies": {
     "apollo-server": "^2.16.1",
-    "graphql-tag": "^2.11.0"
+    "apollo-server-express": "^2.16.1",
+    "graphql-depth-limit": "^1.1.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.10.5",
@@ -44,10 +45,11 @@
     "npm-run-all": "^4.1.5",
     "prettier": "^2.1.0",
     "ts-node": "^9.0.0",
+    "tsconfig-paths": "^3.9.0",
     "typescript": "^4.0.2"
   },
   "nodemonConfig": {
-    "exec": "ts-node src/index.ts",
+    "exec": "ts-node -r tsconfig-paths/register",
     "ext": ".ts",
     "ignore": [],
     "watch": [
