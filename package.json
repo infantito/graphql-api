@@ -1,0 +1,67 @@
+{
+  "name": "graphql-api-talk",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "babel src --extensions .ts --out-dir build",
+    "start:dev": "nodemon",
+    "lint": "eslint --ext .js,.ts src",
+    "lint-staged": "lint-staged",
+    "prettier": "prettier --ignore-path .gitignore \"**/*.+(ts)\"",
+    "format": "npm run prettier -- --write",
+    "check-types": "tsc",
+    "check-format": "npm run prettier -- --list-different",
+    "validate": "run-s check-types check-format lint-staged"
+  },
+  "engines": {
+    "node": "lts/erbium",
+    "npm": "6.14.5"
+  },
+  "keywords": [],
+  "author": "infantito <danielinfantito61@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "apollo-server": "^2.16.1",
+    "graphql-tag": "^2.11.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.10.5",
+    "@babel/core": "^7.11.4",
+    "@babel/preset-env": "^7.11.0",
+    "@babel/preset-typescript": "^7.10.4",
+    "@types/node": "^14.6.0",
+    "@typescript-eslint/eslint-plugin": "^3.10.0",
+    "@typescript-eslint/parser": "^3.10.0",
+    "babel-eslint": "^10.1.0",
+    "babel-plugin-module-resolver": "^4.0.0",
+    "eslint": "^7.7.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "husky": "^4.2.5",
+    "lint-staged": "^10.2.11",
+    "nodemon": "^2.0.4",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^2.1.0",
+    "ts-node": "^9.0.0",
+    "typescript": "^4.0.2"
+  },
+  "nodemonConfig": {
+    "exec": "ts-node src/index.ts",
+    "ext": ".ts",
+    "ignore": [],
+    "watch": [
+      "src"
+    ]
+  },
+  "lint-staged": {
+    "*.{ts}": [
+      "npm run lint"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run validate"
+    }
+  }
+}
