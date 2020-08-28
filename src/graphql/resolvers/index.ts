@@ -1,14 +1,16 @@
 import { IResolvers } from 'apollo-server-express'
 
-const resolvers: IResolvers<Source, Context> = {
+const resolvers: IResolvers<void, Resolvers.Context> = {
   Query: {
-    author(): Author {
+    author(_: void, args: Resolvers.AuthorArgs): Resolvers.Author {
+      const { id } = args
+
       return {
         name: 'Allan Poe',
-        age: 45,
+        age: 45 + id,
       }
     },
-    authors(): Author[] {
+    authors(): Resolvers.Author[] {
       return [
         {
           name: 'Allan Poe',
@@ -16,25 +18,31 @@ const resolvers: IResolvers<Source, Context> = {
         },
       ]
     },
-    book(): Book {
+    book(_: void, args: Resolvers.BookArgs): Resolvers.Book {
+      const { id } = args
+
       return {
         title: 'book name',
         author: 'author name',
+        pages: id,
       }
     },
-    books(): Book[] {
+    books(): Resolvers.Book[] {
       return [
         {
           title: 'book name 1',
           author: 'author name 1',
+          pages: 1,
         },
         {
           title: 'book name 2',
           author: 'author name 2',
+          pages: 2,
         },
         {
           title: 'book name 3',
           author: 'author name 3',
+          pages: 3,
         },
       ]
     },

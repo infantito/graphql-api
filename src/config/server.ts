@@ -6,8 +6,12 @@ import schema from 'schema'
 
 const server = new ApolloServer({
   schema,
-  context: () => {
-    const context = {}
+  context: ({ req, connection }) => {
+    const context = { req }
+
+    if (connection) {
+      return { ...context, ...connection.context }
+    }
 
     return { ...context }
   },

@@ -1,17 +1,33 @@
-interface Book {
-  title: string
-  author: string
-}
+import { Request } from 'express'
 
-interface Author {
-  name: string
-  age: number
-}
+export = Resolvers
 
-interface Source {
-  userId: number
-}
+export as namespace Resolvers
 
-interface Context {
-  db: null
+declare namespace Resolvers {
+  export as namespace Book
+
+  interface Book {
+    title: string
+    author: string
+    pages: number
+  }
+
+  interface Author {
+    name: string
+    age: number
+  }
+
+  interface Context {
+    db: null
+    req: Request
+  }
+
+  interface AuthorArgs {
+    id: number
+  }
+
+  interface BookArgs {
+    id: number
+  }
 }

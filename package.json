@@ -2,7 +2,7 @@
   "name": "graphql-api-talk",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "index.ts",
   "scripts": {
     "build": "babel src --extensions .ts --out-dir build",
     "start": "nodemon src",
@@ -34,6 +34,7 @@
   "devDependencies": {
     "@babel/cli": "^7.10.5",
     "@babel/core": "^7.11.4",
+    "@babel/node": "^7.10.5",
     "@babel/preset-env": "^7.11.0",
     "@babel/preset-typescript": "^7.10.4",
     "@types/graphql-depth-limit": "^1.1.2",
@@ -55,9 +56,11 @@
     "typescript": "^4.0.2"
   },
   "nodemonConfig": {
-    "exec": "ts-node -r tsconfig-paths/register",
-    "ext": ".ts",
-    "ignore": [],
+    "exec": "babel-node -x .ts --inspect -r tsconfig-paths/register",
+    "ext": "ts,graphql",
+    "ignore": [
+      "__tests__/**/*.{ts,js}"
+    ],
     "watch": [
       "src"
     ]
