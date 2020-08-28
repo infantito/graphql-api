@@ -2,7 +2,7 @@
   "compilerOptions": {
     "allowJs": false,
     "allowSyntheticDefaultImports": true,
-    "baseUrl": "./src",
+    "baseUrl": ".",
     "esModuleInterop": true,
     "lib": ["es6"],
     "module": "commonjs",
@@ -10,15 +10,15 @@
     "noEmit": true,
     "outDir": "build",
     "paths": {
-      "@/*": ["./*"],
-      "config": ["./config"],
-      "config/*": ["./config/*"],
-      "constants": ["./utils/constants"],
-      "constants/*": ["./utils/constants/*"],
-      "schema": ["./schema"],
-      "schema/*": ["./schema/*"],
-      "utils": ["./utils"],
-      "utils/*": ["./utils/*"]
+      "@/*": ["./src/*"],
+      "config": ["./src/config"],
+      "config/*": ["./src/config/*"],
+      "constants": ["./src/utils/constants"],
+      "constants/*": ["./src/utils/constants/*"],
+      "schema": ["./src/graphql"],
+      "schema/*": ["./src/graphql"],
+      "utils": ["./src/utils"],
+      "utils/*": ["./src/utils/*"]
     },
     "resolveJsonModule": true,
     "rootDir": "src",
