@@ -35,3 +35,8 @@ export type BookArgs = {
 }
 
 export = BookArgs
+
+/* eslint-disable @typescript-eslint/no-explicit-any */
+export type NoArgs = { [key: string]: any }
+
+export = NoArgs
