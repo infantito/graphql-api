@@ -11,8 +11,12 @@
     "outDir": "build",
     "paths": {
       "@/*": ["./*"],
-      "schemas": ["./schemas"],
-      "schemas/*": ["./schemas/*"],
+      "config": ["./config"],
+      "config/*": ["./config/*"],
+      "constants": ["./utils/constants"],
+      "constants/*": ["./utils/constants/*"],
+      "schema": ["./schema"],
+      "schema/*": ["./schema/*"],
       "utils": ["./utils"],
       "utils/*": ["./utils/*"]
     },

@@ -1,5 +1,17 @@
-import server from './server'
+import express from 'express'
+import compression from 'compression'
+import { PORT } from 'constants/env'
+import server from 'config/server'
 
-const PORT = process.env.PORT || 3000
+const app = express()
 
-server.listen(PORT)
+app.use(compression())
+
+server.applyMiddleware({ app, path: '/graphql', cors: true })
+
+app.listen(PORT, () => {
+  /* eslint-disable-next-line no-console */
+  console.log(
+    `🚀 Server ready at http://localhost:${PORT}${server.graphqlPath}`,
+  )
+})
