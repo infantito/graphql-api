@@ -1,3 +1,4 @@
+import 'config/connection'
 import express from 'express'
 import compression from 'compression'
 import { PORT } from 'constants/env'

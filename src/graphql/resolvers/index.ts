@@ -1,50 +1,55 @@
 import { IResolvers } from 'apollo-server-express'
+import {
+  AuthorArgs,
+  BookArgs,
+  Context,
+  AuthorInstance,
+  BookInstance,
+} from '@/@types/schemas/resolvers'
 
-const resolvers: IResolvers<void, Resolvers.Context> = {
+const resolvers: IResolvers<void, Context> = {
   Query: {
-    author(_: void, args: Resolvers.AuthorArgs): Resolvers.Author {
-      const { id } = args
+    async author(
+      _: void,
+      args: AuthorArgs,
+      { db }: Context,
+    ): Promise<AuthorInstance | null> {
+      const { Author } = db
 
-      return {
-        name: 'Allan Poe',
-        age: 45 + id,
-      }
-    },
-    authors(): Resolvers.Author[] {
-      return [
-        {
-          name: 'Allan Poe',
-          age: 45,
-        },
-      ]
-    },
-    book(_: void, args: Resolvers.BookArgs): Resolvers.Book {
-      const { id } = args
+      const author = await Author.findOne({ name: 'Daniel' })
+        .lean<AuthorInstance>()
+        .exec()
 
-      return {
-        title: 'book name',
-        author: 'author name',
-        pages: id,
-      }
+      return author
     },
-    books(): Resolvers.Book[] {
-      return [
-        {
-          title: 'book name 1',
-          author: 'author name 1',
-          pages: 1,
-        },
-        {
-          title: 'book name 2',
-          author: 'author name 2',
-          pages: 2,
-        },
-        {
-          title: 'book name 3',
-          author: 'author name 3',
-          pages: 3,
-        },
-      ]
+    async authors(
+      _: void,
+      args: void,
+      { db }: Context,
+    ): Promise<AuthorInstance[]> {
+      const { Author } = db
+
+      const authors = await Author.find().lean<AuthorInstance>().exec()
+
+      return authors
+    },
+    async book(
+      _: void,
+      args: BookArgs,
+      { db }: Context,
+    ): Promise<BookInstance | null> {
+      const { Book } = db
+
+      const book = await Book.findOne().lean<BookInstance>().exec()
+
+      return book
+    },
+    async books(_: void, args: void, { db }: Context): Promise<BookInstance[]> {
+      const { Book } = db
+
+      const books = await Book.find().lean<BookInstance>().exec()
+
+      return books
     },
   },
 }

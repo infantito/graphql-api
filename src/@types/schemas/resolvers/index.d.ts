@@ -1,33 +1,37 @@
 import { Request } from 'express'
+import { AuthorModel } from '@/@types/models/authors'
+import { BookModel } from '@/@types/models/books'
 
-export = Resolvers
-
-export as namespace Resolvers
-
-declare namespace Resolvers {
-  export as namespace Book
-
-  interface Book {
-    title: string
-    author: string
-    pages: number
-  }
-
-  interface Author {
-    name: string
-    age: number
-  }
-
-  interface Context {
-    db: null
-    req: Request
-  }
-
-  interface AuthorArgs {
-    id: number
-  }
-
-  interface BookArgs {
-    id: number
-  }
+export type BookInstance = {
+  title: string
+  author: string
+  pages: number
 }
+
+export = BookInstance
+
+export type AuthorInstance = {
+  name: string
+  age: number
+}
+
+export = AuthorInstance
+
+export type Context = {
+  db: { Author: AuthorModel; Book: BookModel }
+  req: Request
+}
+
+export = Context
+
+export type AuthorArgs = {
+  id: number
+}
+
+export = AuthorArgs
+
+export type BookArgs = {
+  id: number
+}
+
+export = BookArgs
