@@ -22,7 +22,6 @@
   "author": "infantito <danielinfantito61@gmail.com>",
   "license": "ISC",
   "dependencies": {
-    "@types/compression": "^1.7.0",
     "apollo-server": "^2.16.1",
     "apollo-server-express": "^2.16.1",
     "compression": "^1.7.4",
@@ -39,6 +38,7 @@
     "@babel/node": "^7.10.5",
     "@babel/preset-env": "^7.11.0",
     "@babel/preset-typescript": "^7.10.4",
+    "@types/compression": "^1.7.0",
     "@types/graphql-depth-limit": "^1.1.2",
     "@types/mongoose": "^5.7.36",
     "@types/node": "^14.6.0",
