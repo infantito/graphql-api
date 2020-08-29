@@ -2,41 +2,29 @@ import { Request } from 'express'
 import { AuthorModel } from '@/@types/models/authors'
 import { BookModel } from '@/@types/models/books'
 
-export type BookInstance = {
+type BookInstance = {
   title: string
   author: string
   pages: number
 }
 
-export = BookInstance
-
-export type AuthorInstance = {
+type AuthorInstance = {
   name: string
   age: number
 }
 
-export = AuthorInstance
-
-export type Context = {
+type Context = {
   db: { Author: AuthorModel; Book: BookModel }
   req: Request
 }
 
-export = Context
-
-export type AuthorArgs = {
+type AuthorArgs = {
   id: number
 }
 
-export = AuthorArgs
-
-export type BookArgs = {
+type BookArgs = {
   id: number
 }
-
-export = BookArgs
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
-export type NoArgs = { [key: string]: any }
-
-export = NoArgs
+type NoArgs = { [key: string]: any }
