@@ -1,7 +1,7 @@
 {
-  "name": "graphql-api-talk",
+  "name": "graphql-api",
   "version": "1.0.0",
-  "description": "",
+  "description": "graphql api with typescript and mongoose",
   "main": "index.ts",
   "scripts": {
     "build": "babel src --extensions .ts --out-dir build --copy-files",
